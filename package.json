@@ -1,0 +1,19 @@
+{
+  "name": "@evapolar/eva-widgets",
+  "version": "0.1.0",
+  "description": "Widgets collection for Evapolar projects",
+  "main": "packages/lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvapolarLTD/eva-widgets.git"
+  },
+  "author": "Evapolar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EvapolarLTD/eva-widgets/issues"
+  },
+  "homepage": "https://github.com/EvapolarLTD/eva-widgets#readme"
+}
