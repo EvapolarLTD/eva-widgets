@@ -2,9 +2,9 @@
   "name": "@evapolar/eva-widgets",
   "version": "0.1.0",
   "description": "Widgets collection for Evapolar projects",
-  "main": "index.js",
+  "main": "./lib/build.min.js",
   "scripts": {
-    "build": "webpack --mode production && npm run test",
+    "build": "webpack --mode production",
     "test": "jest --testMatch=**/*.it.js",
     "format": "prettier --write \"**/*.{js,jsx,json,md,html}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,json,md,html}\"",
@@ -12,7 +12,9 @@
     "lint:fix": "eslint . --fix --ext .js --ext .jsx",
     "format-lint-test": "npm run format && npm run lint && npm test",
     "ci": "npm run format:check && npm run lint && npm test",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "preversion": "npm ci && npm run ci && npm run build",
+    "postversion": "npm publish"
   },
   "repository": {
     "type": "git",

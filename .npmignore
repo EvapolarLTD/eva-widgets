@@ -104,4 +104,14 @@ dist
 .tern-port
 .idea/
 .npmrc
-lib
+.babelrc
+.eslintignore
+.eslintrc.json
+.gitignore
+.npmignore
+.prettierrc
+jest.config.js
+package-lock.json
+packages/
+test/
+webpack.config.js
