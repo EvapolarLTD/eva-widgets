@@ -12,7 +12,6 @@
     "lint:fix": "eslint . --fix --ext .js --ext .jsx",
     "format-lint-test": "npm run format && npm run lint && npm test",
     "ci": "npm run format:check && npm run lint && npm test",
-    "prepare": "npm run build",
     "preversion": "npm ci && npm run ci && npm run build",
     "postversion": "npm publish"
   },
