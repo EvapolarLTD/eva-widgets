@@ -110,6 +110,7 @@ dist
 .gitignore
 .npmignore
 .prettierrc
+.prettierignore
 jest.config.js
 package-lock.json
 packages/
