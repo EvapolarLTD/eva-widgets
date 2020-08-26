@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -16,9 +16,17 @@ import useStyles, { InputStatus, inputTheme } from './styled';
 import { contactUs } from './data';
 import Input from '../../ui/Input';
 import Spinner from '../../ui/spinner';
+import Context from '../Inject/Context';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const Footer = () => {
+  let context;
+
+  try {
+    context = useContext(Context);
+  } catch (e) {}
+
+  const { subscribeUserUrl = '/api/subscribeUser' } = context || {};
   const intl = useIntl();
   const classes = useStyles();
   const [email, setEmail] = useState('');
@@ -29,7 +37,7 @@ const Footer = () => {
 
     // request to the server.
     try {
-      const res = await axios.post(`/api/subscribeUser`, { email: v });
+      const res = await axios.post(subscribeUserUrl, { email: v });
 
       if (res.status === 200)
         setStatus({ anim: false, text: 'footer.subscribing.ok', error: false });
