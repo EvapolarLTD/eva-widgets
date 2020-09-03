@@ -20,13 +20,7 @@ import Context from '../Inject/Context';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const Footer = () => {
-  let context;
-
-  try {
-    context = useContext(Context);
-  } catch (e) {}
-
-  const { subscribeUserUrl = '/api/subscribeUser' } = context || {};
+  const { subscribeUserUrl = '/api/subscribeUser' } = useContext(Context);
   const intl = useIntl();
   const classes = useStyles();
   const [email, setEmail] = useState('');
