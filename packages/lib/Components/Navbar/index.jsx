@@ -76,9 +76,9 @@ const NavBar = (props) => {
   const isScrolled = isScrolledNav();
 
   const { countries, basket, country } = useSelector((state) => ({
-    countries: state.countries.list,
-    basket: state.basket.list,
-    country: state.countries.picked,
+    countries: state.countries ? state.countries.list : [],
+    basket: state.basket ? state.basket.list : [],
+    country: state.countries ? state.countries.picked : 'US',
   }));
 
   const commonCountries = intersectWith(
