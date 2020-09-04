@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useIntl } from 'react-intl';
-import LayoutContext from '../Components/Inject/Context';
+import LayoutContext from '../components/Inject/Context';
 
 const usePathName = () => {
   const context = useContext(LayoutContext);
