@@ -153,49 +153,56 @@ const NavTablet = () => {
         <Link href="https://support.evapolar.com/" className={titleClass}>
           <FormattedMessage id="nav.help_center" />
         </Link>
-        <div className={titleClass}>
-          <AccordionItem>
-            <AccordionHeader>
-              <FormattedMessage id="nav.lang" />
-            </AccordionHeader>
-            <AccordionPanel>
-              {languages.map((value) => (
-                <div key={value.name} className={classes.tabletTitleDescBlock}>
-                  <LangItem
-                    onClick={() => onChangeLanguage(value.shorten)}
-                    className={titleDescClass}
+        {!hideRight && (
+          <>
+            <div className={titleClass}>
+              <AccordionItem>
+                <AccordionHeader>
+                  <FormattedMessage id="nav.lang" />
+                </AccordionHeader>
+                <AccordionPanel>
+                  {languages.map((value) => (
+                    <div
+                      key={value.name}
+                      className={classes.tabletTitleDescBlock}
+                    >
+                      <LangItem
+                        onClick={() => onChangeLanguage(value.shorten)}
+                        className={titleDescClass}
+                      >
+                        <FormattedMessage id={value.name} />
+                      </LangItem>
+                    </div>
+                  ))}
+                </AccordionPanel>
+              </AccordionItem>
+            </div>
+            <div className={titleClass}>
+              <AccordionItem>
+                <AccordionHeader>
+                  <FormattedMessage id="nav.country" />
+                </AccordionHeader>
+                <AccordionPanel>
+                  <DialogContext.Provider
+                    value={{
+                      selectedValue: countryName,
+                      onSelect: (value) => onChangeCountry(value.name),
+                      translate: false,
+                    }}
                   >
-                    <FormattedMessage id={value.name} />
-                  </LangItem>
-                </div>
-              ))}
-            </AccordionPanel>
-          </AccordionItem>
-        </div>
-        <div className={titleClass}>
-          <AccordionItem>
-            <AccordionHeader>
-              <FormattedMessage id="nav.country" />
-            </AccordionHeader>
-            <AccordionPanel>
-              <DialogContext.Provider
-                value={{
-                  selectedValue: countryName,
-                  onSelect: (value) => onChangeCountry(value.name),
-                  translate: false,
-                }}
-              >
-                {countries.map((value, i) => (
-                  <ItemExtended
-                    key={genKey()}
-                    value={value}
-                    last={countries.length - 1 === i}
-                  />
-                ))}
-              </DialogContext.Provider>
-            </AccordionPanel>
-          </AccordionItem>
-        </div>
+                    {countries.map((value, i) => (
+                      <ItemExtended
+                        key={genKey()}
+                        value={value}
+                        last={countries.length - 1 === i}
+                      />
+                    ))}
+                  </DialogContext.Provider>
+                </AccordionPanel>
+              </AccordionItem>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
