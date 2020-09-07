@@ -62,7 +62,7 @@ const NavDesktop = () => {
       <LocalizedLink to="technology" className={titleClass}>
         <FormattedMessage id="nav.technology" />
       </LocalizedLink>
-      <Link href="/blog" className={titleClass}>
+      <Link href="https://evapolar.com/blog" className={titleClass}>
         <FormattedMessage id="nav.blog" />
       </Link>
       <LocalizedLink to="aff-program" className={titleClass}>

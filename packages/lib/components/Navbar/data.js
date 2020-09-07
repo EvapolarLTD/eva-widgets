@@ -1,19 +1,19 @@
 const items = [
   {
     name: 'navbar.family.evachill',
-    link: '/evachill',
+    link: 'evachill',
   },
   {
     name: 'navbar.family.evalight',
-    link: '/evalight',
+    link: 'evalight',
   },
   {
     name: 'navbar.family.evasmart',
-    link: '/evasmart',
+    link: 'evasmart',
   },
   {
     name: 'navbar.family.all_products',
-    link: '/shop',
+    link: 'shop',
   },
 ];
 

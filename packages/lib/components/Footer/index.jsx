@@ -58,7 +58,7 @@ const Footer = () => {
             <LocalizedLink to="technology" className={classes.link}>
               {intl.formatMessage({ id: 'footer.technology' })}
             </LocalizedLink>
-            <Link href="/blog" className={classes.link}>
+            <Link href="https://evapolar.com/blog" className={classes.link}>
               {intl.formatMessage({ id: 'footer.blog' })}
             </Link>
           </Grid>
