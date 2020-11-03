@@ -147,7 +147,7 @@ NavBar.propTypes = {
 
 NavBar.defaultProps = {
   short: false,
-  logoTo: '/',
+  logoTo: '',
   forcedScrolled: false,
   children: React.createElement('div'),
   hideRight: false,
