@@ -9,7 +9,7 @@ import globalImg from '../../images/nav/region-global.svg';
 import DropDown from '../../ui/dropdown';
 import HideOnScroll from '../../utils/hideonscroll';
 import DialogList from '../../ui/dialoglist';
-import { items, languages } from './data';
+import { items, languages, support } from './data';
 import NavContext from './context';
 import LocalizedLink from '../localized-link';
 import BasketIcon from './BasketIcon/index';
@@ -62,15 +62,19 @@ const NavDesktop = () => {
       <LocalizedLink to="technology" className={titleClass}>
         <FormattedMessage id="nav.technology" />
       </LocalizedLink>
-      <Link href="https://evapolar.com/blog" className={titleClass}>
+      <Link href="/blog" className={titleClass}>
         <FormattedMessage id="nav.blog" />
       </Link>
       <LocalizedLink to="aff-program" className={titleClass}>
         <FormattedMessage id="nav.af_program" />
       </LocalizedLink>
-      <Link href="https://support.evapolar.com/" className={titleClass}>
-        <FormattedMessage id="nav.help_center" />
-      </Link>
+      <DropDown
+        title={<FormattedMessage id="footer.support" />}
+        items={support}
+        scrolled={scrolled}
+        translate
+        className={classes.support}
+      />
     </>
   );
 

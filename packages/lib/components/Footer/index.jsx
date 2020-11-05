@@ -58,22 +58,34 @@ const Footer = () => {
             <LocalizedLink to="technology" className={classes.link}>
               {intl.formatMessage({ id: 'footer.technology' })}
             </LocalizedLink>
-            <Link href="https://evapolar.com/blog" className={classes.link}>
+            <Link href="/blog" className={classes.link}>
               {intl.formatMessage({ id: 'footer.blog' })}
             </Link>
-          </Grid>
-          <Grid item md={3} sm={4} xs={12} className={classes.block}>
-            <Typography paragraph variant="h6" className={classes.title}>
-              {intl.formatMessage({ id: 'footer.shop' })}
-            </Typography>
             <LocalizedLink to="aff-program" className={classes.link}>
               {intl.formatMessage({ id: 'footer.aff-program' })}
             </LocalizedLink>
+          </Grid>
+          <Grid item md={3} sm={4} xs={12} className={classes.block}>
+            <Typography paragraph variant="h6" className={classes.title}>
+              {intl.formatMessage({ id: 'footer.support' })}
+            </Typography>
             <LocalizedLink to="about" className={classes.link} hidden>
               {intl.formatMessage({ id: 'footer.about' })}
             </LocalizedLink>
             <Link href="https://support.evapolar.com" className={classes.link}>
               {intl.formatMessage({ id: 'footer.help' })}
+            </Link>
+            <Link
+              href="https://support.evapolar.com/hc/en-us/articles/115000899625-Return-Refund-policy"
+              className={classes.link}
+            >
+              {intl.formatMessage({ id: 'footer.returns' })}
+            </Link>
+            <Link
+              href="https://support.evapolar.com/hc/en-us/requests/new?ticket_form_id=360001043920"
+              className={classes.link}
+            >
+              {intl.formatMessage({ id: 'footer.technical_help' })}
             </Link>
           </Grid>
           <Grid item md={3} sm={4} xs={12} className={classes.block}>

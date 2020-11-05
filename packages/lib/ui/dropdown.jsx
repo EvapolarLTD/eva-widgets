@@ -65,9 +65,7 @@ const Link = styled.a`
   }
 `;
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 const CustomizedMenu = ({
   title,
   description,
@@ -77,6 +75,7 @@ const CustomizedMenu = ({
   shortenTitle,
   translate,
   onItemClick,
+  className,
 }) => {
   const intl = useIntl();
   const node = useRef();
@@ -115,49 +114,48 @@ const CustomizedMenu = ({
   const itemTitle = title !== '' ? title : finalText;
 
   return (
-    <>
-      <Wrapper scrolled={scrolled} ref={node}>
-        <List opened={opened}>
-          {description !== '' && (
-            <li>
-              <Title>{description}</Title>
+    <Wrapper scrolled={scrolled} ref={node} className={className}>
+      <List opened={opened}>
+        {description !== '' && (
+          <li>
+            <Title>{description}</Title>
+          </li>
+        )}
+        {items.map((value) => {
+          const Text = (
+            <span>
+              {translate ? intl.formatMessage({ id: value.name }) : value.name}
+            </span>
+          );
+
+          const onItemClicked = () => {
+            if (onItemClick) onItemClick(value);
+          };
+
+          const linkProps = value.href ? { href: value.href } : {};
+
+          return (
+            <li key={value.name}>
+              {value.link ? (
+                <LocalizedLink to={value.link}>{Text}</LocalizedLink>
+              ) : (
+                /* eslint-disable-next-line react/jsx-props-no-spreading */
+                <Link {...linkProps} onClick={onItemClicked}>
+                  {Text}
+                </Link>
+              )}
             </li>
-          )}
-          {items.map((value) => {
-            const Text = (
-              <span>
-                {translate
-                  ? intl.formatMessage({ id: value.name })
-                  : value.name}
-              </span>
-            );
-
-            const onItemClicked = () => {
-              if (onItemClick) onItemClick(value);
-            };
-
-            return (
-              <li key={value.name}>
-                {value.link ? (
-                  <LocalizedLink to={value.link}>{Text}</LocalizedLink>
-                ) : (
-                  <Link onClick={onItemClicked}>{Text}</Link>
-                )}
-              </li>
-            );
-          })}
-        </List>
-        <Control onClick={onToggle} scrolled={scrolled}>
-          {itemTitle}
-          <Arrow opened={opened} scrolled={scrolled} />
-        </Control>
-      </Wrapper>
-    </>
+          );
+        })}
+      </List>
+      <Control onClick={onToggle} scrolled={scrolled}>
+        {itemTitle}
+        <Arrow opened={opened} scrolled={scrolled} />
+      </Control>
+    </Wrapper>
   );
 };
-/* eslint-enable jsx-a11y/anchor-is-valid */
-/* eslint-enable jsx-a11y/click-events-have-key-events */
-/* eslint-enable jsx-a11y/no-static-element-interactions */
+/* eslint-enable jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 
 CustomizedMenu.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
@@ -168,6 +166,7 @@ CustomizedMenu.propTypes = {
   shortenTitle: PropTypes.bool,
   translate: PropTypes.bool,
   onItemClick: PropTypes.func,
+  className: PropTypes.string,
 };
 
 CustomizedMenu.defaultProps = {
@@ -178,6 +177,7 @@ CustomizedMenu.defaultProps = {
   shortenTitle: false,
   translate: false,
   onItemClick: null,
+  className: '',
 };
 
 export default CustomizedMenu;

@@ -36,4 +36,21 @@ const languages = [
   },
 ];
 
-export { items, languages };
+const support = [
+  {
+    name: 'nav.help_center',
+    href: 'https://support.evapolar.com/',
+  },
+  {
+    name: 'footer.returns',
+    href:
+      'https://support.evapolar.com/hc/en-us/articles/115000899625-Return-Refund-policy',
+  },
+  {
+    name: 'footer.technical_help',
+    href:
+      'https://support.evapolar.com/hc/en-us/requests/new?ticket_form_id=360001043920',
+  },
+];
+
+export { items, languages, support };

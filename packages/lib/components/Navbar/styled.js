@@ -98,4 +98,7 @@ export default makeStyles((theme) => ({
   fixCenterAlign: {
     transform: 'translateX(15px)',
   },
+  support: {
+    marginLeft: 40,
+  },
 }));
