@@ -1,6 +1,6 @@
 {
   "name": "@evapolar/eva-widgets",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Widgets collection for Evapolar projects",
   "main": "./lib/build.min.js",
   "scripts": {
