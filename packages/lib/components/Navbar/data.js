@@ -21,18 +21,27 @@ const languages = [
   {
     name: 'nav.lang_en',
     shorten: 'EN',
+    code: 'en',
+  },
+  {
+    name: 'nav.lang_en_au',
+    shorten: 'EN (AU)',
+    code: 'en-AU',
   },
   {
     name: 'nav.lang_es',
     shorten: 'ES',
+    code: 'es',
   },
   {
     name: 'nav.lang_fr',
     shorten: 'FR',
+    code: 'fr',
   },
   {
     name: 'nav.lang_de',
     shorten: 'DE',
+    code: 'de',
   },
 ];
 

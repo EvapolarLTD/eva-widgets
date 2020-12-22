@@ -102,21 +102,18 @@ const Divider = () => {
   return <div className={classes.divider} />;
 };
 
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/prop-types, jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 const Item = ({ value = {} }) => {
   const classes = useStyles();
   const { name = '' } = value;
-  const { selectedValue = '', onSelect, translate } = useContext(DialogContext);
+  const { selectedValue, onSelect, translate } = useContext(DialogContext);
   const memoizedCallback = useCallback(() => {
     if (onSelect !== undefined) onSelect(value);
   }, [value]);
 
   const classesList = classnames(
     classes.item,
-    name === selectedValue && classes.itemSelected
+    value === selectedValue && classes.itemSelected
   );
 
   const text = translate ? <FormattedMessage id={name} /> : name;
@@ -181,7 +178,7 @@ const DialogList = ({
     };
   }, []);
 
-  const showDefaultIcon = selectedValue === '';
+  const showDefaultIcon = selectedValue === null;
 
   const state = {
     selectedValue,
@@ -195,7 +192,7 @@ const DialogList = ({
     if (customItems) {
       customItems.forEach((value) => {
         value.items.forEach((v) => {
-          if (v.name === selectedValue) {
+          if (v === selectedValue) {
             selectedWrapText = v[fieldSelected];
           }
         });
@@ -256,10 +253,7 @@ const DialogList = ({
     </DialogContext.Provider>
   );
 };
-/* eslint-enable jsx-a11y/anchor-is-valid */
-/* eslint-enable jsx-a11y/click-events-have-key-events */
-/* eslint-enable jsx-a11y/no-static-element-interactions */
-/* eslint-enable react/prop-types */
+/* eslint-enable react/prop-types, jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 
 DialogList.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
@@ -269,7 +263,7 @@ DialogList.propTypes = {
   scrolled: PropTypes.bool,
   defaultIcon: PropTypes.string,
   translate: PropTypes.bool,
-  selectedValue: PropTypes.string,
+  selectedValue: PropTypes.objectOf(PropTypes.any),
   width: PropTypes.number,
   onSelect: PropTypes.func,
   fieldSelected: PropTypes.string,
@@ -280,7 +274,7 @@ DialogList.defaultProps = {
   scrolled: false,
   defaultIcon: undefined,
   translate: false,
-  selectedValue: '',
+  selectedValue: null,
   width: 70,
   items: [],
   customItems: undefined,

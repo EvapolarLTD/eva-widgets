@@ -13,8 +13,11 @@ import { items, languages, support } from './data';
 import NavContext from './context';
 import LocalizedLink from '../localized-link';
 import BasketIcon from './BasketIcon/index';
+import { getSelectedCountry } from './utils';
 
-/* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 const NavDesktop = () => {
   const {
     countries,
@@ -27,10 +30,10 @@ const NavDesktop = () => {
     hideRight,
   } = useContext(NavContext);
 
-  const countryName = getCountry();
-  const locale = useSelector((state) => state.locale.picked).toUpperCase();
+  const countryCode = getCountry();
+  const locale = useSelector((state) => state.locale.picked);
 
-  let localeIndex = languages.findIndex((v) => v.shorten === locale);
+  let localeIndex = languages.findIndex((v) => v.code === locale);
 
   if (localeIndex === -1) localeIndex = 0;
 
@@ -87,15 +90,15 @@ const NavDesktop = () => {
         shortenTitle
         translate
         selected={localeIndex}
-        onItemClick={(value) => onChangeLanguage(value.shorten)}
+        onItemClick={(value) => onChangeLanguage(value.code)}
       />
       <DialogList
         defaultIcon={globalImg}
         title={<FormattedMessage id="nav.country_choose" />}
         customItems={countries}
         scrolled={scrolled}
-        selectedValue={countryName}
-        onSelect={(value) => onChangeCountry(value.name)}
+        selectedValue={getSelectedCountry(countries, countryCode)}
+        onSelect={(value) => onChangeCountry(value.code2)}
         fieldSelected="code2"
       />
       <BasketIcon />
@@ -143,6 +146,7 @@ const NavDesktop = () => {
     </>
   );
 };
-/* eslint-enable jsx-a11y/anchor-is-valid, jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events */
+/* eslint-enable jsx-a11y/interactive-supports-focus */
+/* eslint-enable jsx-a11y/click-events-have-key-events */
 
 export default NavDesktop;

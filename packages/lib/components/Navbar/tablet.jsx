@@ -21,6 +21,7 @@ import LocalizedLink from '../localized-link';
 import BasketIcon from './BasketIcon/index';
 import isServerRender from '../../utils/isServerRender';
 import { LangItem } from './tabletStyled';
+import { getSelectedCountry } from './utils';
 
 /* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events */
 const NavTablet = () => {
@@ -75,7 +76,7 @@ const NavTablet = () => {
     classes.tabletTitleDesc
   );
 
-  const countryName = getCountry();
+  const countryCode = getCountry();
 
   const jsxHeader = (
     <HideOnScroll>
@@ -175,7 +176,7 @@ const NavTablet = () => {
               {languages.map((value) => (
                 <div key={value.name} className={classes.tabletTitleDescBlock}>
                   <LangItem
-                    onClick={() => onChangeLanguage(value.shorten)}
+                    onClick={() => onChangeLanguage(value.code)}
                     className={titleDescClass}
                   >
                     <FormattedMessage id={value.name} />
@@ -193,8 +194,8 @@ const NavTablet = () => {
             <AccordionPanel>
               <DialogContext.Provider
                 value={{
-                  selectedValue: countryName,
-                  onSelect: (value) => onChangeCountry(value.name),
+                  selectedValue: getSelectedCountry(countries, countryCode),
+                  onSelect: (value) => onChangeCountry(value.code2),
                   translate: false,
                 }}
               >

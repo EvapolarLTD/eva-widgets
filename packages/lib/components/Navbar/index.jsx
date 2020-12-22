@@ -105,12 +105,12 @@ const NavBar = (props) => {
     short,
     logoTo,
     hideRight,
-    onChangeCountry: (name) => {
+    onChangeCountry: (code) => {
       /* change country, apply some changes */
-      if (onApplyCountry) onApplyCountry(name);
+      if (onApplyCountry) onApplyCountry(code);
 
       /* apply locale */
-      if (onApplyLocale) onApplyLocale(localeManager, name);
+      if (onApplyLocale) onApplyLocale(localeManager, code);
     },
     onChangeLanguage: (code) => {
       localeManager(code.toLowerCase());

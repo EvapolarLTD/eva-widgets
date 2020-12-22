@@ -5,7 +5,8 @@ import NavContext from '../context';
 import useStyles from './styled';
 import bucketImg from '../../../images/nav/icon-bucket.svg';
 
-/* eslint-disable jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 const BasketIcon = () => {
   const classes = useStyles();
 
@@ -25,6 +26,7 @@ const BasketIcon = () => {
     </div>
   );
 };
-/* eslint-enable jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events */
+/* eslint-enable jsx-a11y/interactive-supports-focus */
+/* eslint-enable jsx-a11y/click-events-have-key-events */
 
 export default BasketIcon;
